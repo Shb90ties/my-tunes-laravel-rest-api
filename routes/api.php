@@ -5,14 +5,26 @@ use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
+/**
+    removed the session middleware (not needed in rest-api)
+    with only ajax request we can use
+    put => place in the DB
+    patch => update the DB
+    delete => remove from the DB
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/account', [
+    'uses' => 'AccountController@postAccount'
+]);
+
+Route::get('/account', [
+    'uses' => 'AccountController@getAccount'
+]);
+
+Route::put('/account/{id}', [
+    'uses' => 'AccountController@setAccount'
+]);
+
+Route::delete('/account/{id}', [
+    'uses' => 'AccountController@removeAccount'
+]);
