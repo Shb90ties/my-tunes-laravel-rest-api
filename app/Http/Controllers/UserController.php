@@ -12,7 +12,7 @@ class UserController extends Controller {
     * @param request: user data 'name' string,'email' string,'password' string
     */
     public function signup(Request $request) {
-            // validate
+        // validate the request body content use these headers (Content-Type, X-Requested-With)
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -27,6 +27,8 @@ class UserController extends Controller {
         ]);     // encript password string in the DB
 
         $user->save();
+            // save in the users table
+
         return response()->json([
             'message'=> 'user was created!'
         ], 201);

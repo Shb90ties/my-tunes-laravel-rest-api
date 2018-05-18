@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller {
 
-    public function postAccount () {
-        $user = new User();
-        
+    public function postAccount () {        
     }
 
     public function getAccount () {
