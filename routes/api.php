@@ -36,3 +36,9 @@ Route::post('/user', [
 Route::post('/user/signin', [
     'uses' => 'UserController@signin'
 ]);
+
+Route::group(['prefix' => 'listing',  'middleware' => 'auth.jwt'], function() {
+    Route::post('/create', [
+        'uses' => 'ListingController@create'
+    ]);
+});

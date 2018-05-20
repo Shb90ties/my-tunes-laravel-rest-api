@@ -65,9 +65,8 @@ class UserController extends Controller {
             ], 500);
         }
 
-            // if everything was good
         return response()->json([
-            'token' => $token
+            'token' => $token,
         ], 200);
     }
 }
